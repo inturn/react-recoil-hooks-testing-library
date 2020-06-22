@@ -1,20 +1,18 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, cleanup, renderHook } from '@testing-library/react-hooks';
 import React, { useEffect } from 'react';
 import { RecoilRoot, RecoilState, useSetRecoilState } from 'recoil';
-
-export { act };
 
 interface MockRecoilState {
   recoilState: RecoilState<any>;
   initialValue: any;
 }
 
-interface SetMockRecoilStateOptions {
+interface RenderHookOptions {
   states?: MockRecoilState[];
   wrapper?: React.ComponentType;
 }
 
-function recoilStateWrapper(options?: SetMockRecoilStateOptions) {
+function recoilStateWrapper(options?: RenderHookOptions) {
   const StateComponent: React.FC<MockRecoilState> = (
     props: MockRecoilState,
   ) => {
@@ -50,7 +48,7 @@ function recoilStateWrapper(options?: SetMockRecoilStateOptions) {
 
 function renderRecoilHook<P, R>(
   callback: (props: P) => R,
-  options?: SetMockRecoilStateOptions & {
+  options?: RenderHookOptions & {
     initialProps?: P;
     wrapper?: React.ComponentType;
   },
@@ -72,4 +70,4 @@ function renderRecoilHook<P, R>(
   });
 }
 
-export { renderRecoilHook };
+export { renderRecoilHook, act, cleanup };
