@@ -1,6 +1,6 @@
 {
   "name": "react-recoil-hooks-testing-library",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Simple and complete React hooks testing utilities that encourage good testing practices... with Recoil!",
   "main": "dist/react-recoil-hooks-testing-library.js",
   "types": "dist/types/index.d.ts",
@@ -44,13 +44,24 @@
     "jest": "^25.2.4",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
-    "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-test-renderer": "^16.8.4",
+    "react": "^16.8.4",
+    "recoil": "^0.0.10",
     "rollup-plugin-typescript2": "^0.20.1",
     "rollup": "^1.31.1",
     "standard-version": "^7.1.0",
     "ts-jest": "^25.3.0",
     "typescript": "^3.4.5"
+  },
+  "peerDependencies": {
+    "react-dom": "^16.8.4",
+    "react-test-renderer": "^16.8.4",
+    "react": "^16.8.4",
+    "recoil": "^0.0.10"
+  },
+  "dependencies": {
+    "@testing-library/react-hooks": "^3.3.0"
   },
   "jest": {
     "transform": {
@@ -67,11 +78,6 @@
       "js",
       "json"
     ]
-  },
-  "dependencies": {
-    "@testing-library/react-hooks": "^3.3.0",
-    "react-test-renderer": "^16.8.4",
-    "recoil": "^0.0.10"
   },
   "keywords": [
     "recoil",
