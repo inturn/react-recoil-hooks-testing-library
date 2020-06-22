@@ -1,0 +1,36 @@
+{
+  "include": ["src", "types"],
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "baseUrl": "./",
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "lib": ["es2015", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    },
+    "rootDirs": ["src"],
+    "sourceMap": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "target": "es5",
+    "outDir": "dist"
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "typeRoots": ["types"]
+  }
+}
