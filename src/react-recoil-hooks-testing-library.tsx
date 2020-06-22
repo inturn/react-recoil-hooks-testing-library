@@ -4,8 +4,6 @@ import { RecoilRoot, RecoilState, useSetRecoilState } from 'recoil';
 
 export { act };
 
-console.log('a', React.version);
-
 interface MockRecoilState {
   recoilState: RecoilState<any>;
   initialValue: any;
