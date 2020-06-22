@@ -23,7 +23,8 @@
     "prebuild": "yarn lint && yarn test",
     "prepublish": "yarn build",
     "release": "standard-version && yarn publish --non-interactive",
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "watch": "yarn rollup -c rollup.config.js --watch"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.4",
@@ -43,8 +44,8 @@
     "jest": "^25.2.4",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
-    "react-dom": "^16.13.1",
-    "react": "^16.13.1",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "rollup-plugin-typescript2": "^0.20.1",
     "rollup": "^1.31.1",
     "standard-version": "^7.1.0",
@@ -67,12 +68,9 @@
       "json"
     ]
   },
-  "peerDependencies": {
-    "react": "^16.8.4"
-  },
   "dependencies": {
     "@testing-library/react-hooks": "^3.3.0",
-    "react-test-renderer": "^16.13.1",
+    "react-test-renderer": "^16.8.4",
     "recoil": "^0.0.10"
   },
   "keywords": [
