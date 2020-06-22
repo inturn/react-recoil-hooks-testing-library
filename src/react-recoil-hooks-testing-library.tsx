@@ -1,8 +1,10 @@
-import * as ReactHooksTestingLibrary from '@testing-library/react-hooks';
 import React, { useEffect } from 'react';
+import { act, renderHook } from 'react-hooks-testing-library';
 import { RecoilRoot, RecoilState, useSetRecoilState } from 'recoil';
 
-export * from '@testing-library/react-hooks';
+export { act };
+
+console.log('a', React.version);
 
 interface MockRecoilState {
   recoilState: RecoilState<any>;
@@ -63,7 +65,7 @@ function renderRecoilHook<P, R>(
   readonly unmount: () => boolean;
   readonly rerender: (hookProps?: P) => void;
 } {
-  return ReactHooksTestingLibrary.renderHook(callback, {
+  return renderHook(callback, {
     ...options,
     wrapper: recoilStateWrapper({
       states: options?.states,
