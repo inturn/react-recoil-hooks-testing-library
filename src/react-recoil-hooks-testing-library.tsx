@@ -1,5 +1,5 @@
+import { act, renderHook } from '@testing-library/react-hooks';
 import React, { useEffect } from 'react';
-import { act, renderHook } from 'react-hooks-testing-library';
 import { RecoilRoot, RecoilState, useSetRecoilState } from 'recoil';
 
 export { act };
