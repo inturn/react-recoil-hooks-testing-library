@@ -50,7 +50,7 @@
     "recoil": "^0.0.10",
     "rollup": "^1.31.1",
     "rollup-plugin-typescript2": "^0.20.1",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "ts-jest": "^25.3.0",
     "typescript": "^3.4.5"
   },
