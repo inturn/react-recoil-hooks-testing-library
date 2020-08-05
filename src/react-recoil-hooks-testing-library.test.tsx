@@ -87,4 +87,33 @@ describe('react-recoil-hooks-testing-library', () => {
     expect(result.current.contextValue).toBe('context!');
     expect(result.current.valueA).toBe(9);
   });
+
+  it('sets initialProps with wrapper', () => {
+    const MockContext = React.createContext('');
+
+    const useRecoilTestHookWithContext = () => {
+      const valueA = useRecoilValue(atomA);
+      const contextValue = useContext(MockContext);
+
+      return { valueA, contextValue };
+    };
+
+    const WrapperWithProviderValue: React.ComponentType<{
+      providerValue: string;
+    }> = ({ children, providerValue }) => (
+      <MockContext.Provider value={providerValue}>
+        {children}
+      </MockContext.Provider>
+    );
+    const { result } = renderRecoilHook(useRecoilTestHookWithContext, {
+      wrapper: WrapperWithProviderValue,
+      states: [{ recoilState: atomA, initialValue: 123 }],
+      initialProps: {
+        providerValue: 'context!',
+      },
+    });
+
+    expect(result.current.contextValue).toBe('context!');
+    expect(result.current.valueA).toBe(123);
+  });
 });
