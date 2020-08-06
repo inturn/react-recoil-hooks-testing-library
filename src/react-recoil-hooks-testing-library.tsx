@@ -9,7 +9,7 @@ interface MockRecoilState {
 
 interface RenderHookOptions {
   states?: MockRecoilState[];
-  wrapper?: React.ComponentType<any>;
+  wrapper?: React.ComponentType;
 }
 
 function recoilStateWrapper(options?: RenderHookOptions) {
@@ -30,7 +30,7 @@ function recoilStateWrapper(options?: RenderHookOptions) {
     ));
   };
 
-  const Wrapper: React.FC = props => {
+  const WrapperComponent: React.FC = props => {
     const renderChildren = options?.wrapper ? (
       <options.wrapper {...props} />
     ) : (
@@ -44,14 +44,14 @@ function recoilStateWrapper(options?: RenderHookOptions) {
       </RecoilRoot>
     );
   };
-  return Wrapper;
+  return WrapperComponent;
 }
 
 function renderRecoilHook<P, R>(
   callback: (props: P) => R,
   options?: RenderHookOptions & {
     initialProps?: P;
-    wrapper?: React.ComponentType<any>;
+    wrapper?: React.ComponentType | React.ComponentType<any>;
   },
 ): {
   readonly result: {
