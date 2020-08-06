@@ -9,7 +9,7 @@ interface MockRecoilState {
 
 interface RenderHookOptions {
   states?: MockRecoilState[];
-  wrapper?: React.ComponentType<any> | React.ComponentType;
+  wrapper?: React.FunctionComponent<any>;
 }
 
 function recoilStateWrapper(options?: RenderHookOptions) {

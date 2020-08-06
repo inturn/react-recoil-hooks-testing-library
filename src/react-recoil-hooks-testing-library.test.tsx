@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useContext } from 'react';
+import React, { useContext } from 'react';
 import { atom, useRecoilState, useRecoilValue } from 'recoil';
 
 import { act, renderRecoilHook } from './react-recoil-hooks-testing-library';
@@ -78,7 +78,7 @@ describe('react-recoil-hooks-testing-library', () => {
     };
 
     const { result } = renderRecoilHook(useRecoilTestHookWithContext, {
-      wrapper: ({ children }: PropsWithChildren<{}>) => (
+      wrapper: ({ children }) => (
         <MockContext.Provider value="context!">{children}</MockContext.Provider>
       ),
       states: [{ recoilState: atomA, initialValue: 9 }],
