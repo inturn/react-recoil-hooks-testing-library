@@ -30,11 +30,11 @@ function recoilStateWrapper(options?: RenderHookOptions) {
     ));
   };
 
-  return (props: { children?: React.ReactNode }) => {
+  return ({ children }: { children?: React.ReactNode }) => {
     const renderChildren = options?.wrapper ? (
-      <options.wrapper {...props} />
+      <options.wrapper>{children}</options.wrapper>
     ) : (
-      props.children
+      children
     );
 
     return (
@@ -50,7 +50,7 @@ function renderRecoilHook<P, R>(
   callback: (props: P) => R,
   options?: RenderHookOptions & {
     initialProps?: P;
-    wrapper?: React.ComponentType | React.ComponentType<any>;
+    wrapper?: React.ComponentType;
   },
 ): {
   readonly result: {
