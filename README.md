@@ -29,12 +29,12 @@ import { countState, useRecoilCounter } from './count';
 
 describe('useRecoilCounter', () => {
   it('returns the default count value', () => {
-    const { result } = renderRecoilHook(useRecoilTestHook);
+    const { result } = renderRecoilHook(useRecoilCounter);
     expect(result.current.count).toBe(0);
   });
 
   it('updates the counter when increment is called', () => {
-    const { result } = renderRecoilHook(useRecoilTestHook);
+    const { result } = renderRecoilHook(useRecoilCounter);
 
     act(() => {
       result.current.increment();
@@ -44,7 +44,7 @@ describe('useRecoilCounter', () => {
   });
 
   it('returns updated default atom state', () => {
-    const { result } = renderRecoilHook(useRecoilTestHook, {
+    const { result } = renderRecoilHook(useRecoilCounter, {
       states: [{ recoilState: countState, initialValue: 42 }],
     });
 
