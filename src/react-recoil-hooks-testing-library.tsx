@@ -1,6 +1,6 @@
 import { act, cleanup, renderHook } from '@testing-library/react-hooks';
-import React, { useEffect } from 'react';
-import { RecoilRoot, RecoilState, useSetRecoilState } from 'recoil';
+import React from 'react';
+import { RecoilRoot, RecoilState } from 'recoil';
 
 interface MockRecoilState {
   recoilState: RecoilState<any>;
@@ -13,23 +13,6 @@ interface RenderHookOptions {
 }
 
 function recoilStateWrapper(options?: RenderHookOptions) {
-  const StateComponent: React.FC<MockRecoilState> = (
-    props: MockRecoilState,
-  ) => {
-    const setState = useSetRecoilState(props.recoilState);
-    useEffect(() => {
-      setState(props.initialValue);
-    }, []);
-
-    return null;
-  };
-
-  const renderStateComponents = () => {
-    return options?.states?.map(state => (
-      <StateComponent key={state.recoilState.key} {...state} />
-    ));
-  };
-
   return (props: { children?: React.ReactNode }) => {
     const renderChildren = options?.wrapper ? (
       <options.wrapper {...props} />
@@ -38,8 +21,13 @@ function recoilStateWrapper(options?: RenderHookOptions) {
     );
 
     return (
-      <RecoilRoot>
-        {renderStateComponents()}
+      <RecoilRoot
+        initializeState={({ set }) => {
+          options?.states?.forEach(({ recoilState, initialValue }) => {
+            set(recoilState, initialValue);
+          });
+        }}
+      >
         {renderChildren}
       </RecoilRoot>
     );
