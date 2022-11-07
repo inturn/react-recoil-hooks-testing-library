@@ -100,6 +100,7 @@ describe('react-recoil-hooks-testing-library', () => {
 
     const WrapperWithProviderValue: React.FC<{
       providerValue: string;
+      children?: React.ReactNode;
     }> = ({ children, providerValue }) => (
       <MockContext.Provider value={providerValue}>
         {children}
@@ -129,6 +130,7 @@ describe('react-recoil-hooks-testing-library', () => {
 
     const WrapperWithProviderValue: React.FC<{
       providerValue: string;
+      children?: React.ReactNode;
     }> = ({ children, providerValue }) => (
       <MockContext.Provider value={providerValue}>
         {children}

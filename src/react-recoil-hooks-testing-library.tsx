@@ -1,4 +1,9 @@
-import { act, cleanup, renderHook } from '@testing-library/react-hooks';
+import {
+  act,
+  cleanup,
+  renderHook,
+  RenderResult,
+} from '@testing-library/react-hooks';
 import React, { useEffect } from 'react';
 import { RecoilRoot, RecoilState, useSetRecoilState } from 'recoil';
 
@@ -53,12 +58,9 @@ function renderRecoilHook<P, R>(
     wrapper?: React.ComponentType<P> | React.ComponentType;
   },
 ): {
-  readonly result: {
-    readonly current: R;
-    readonly error: Error;
-  };
+  readonly result: RenderResult<R>;
   readonly waitForNextUpdate: () => Promise<void>;
-  readonly unmount: () => boolean;
+  readonly unmount: () => void;
   readonly rerender: (hookProps?: P) => void;
 } {
   return renderHook(callback, {
